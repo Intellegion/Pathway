@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: cc803c47ee511774ebbc5622f2d93313
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - go: {fileID: 8216535577201661890, guid: 064730900557fb742b1edbd095df3e01, type: 3}
+  - loadbutton: {instanceID: 0}
+  - menu_canvas: {instanceID: 0}
+  - buttons_canvas: {instanceID: 0}
+  - panel_canvas: {instanceID: 0}
+  - player: {instanceID: 0}
+  - play_cam: {instanceID: 0}
+  - editor_cam: {instanceID: 0}
+  - shifter: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
