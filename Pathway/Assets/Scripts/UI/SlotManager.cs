@@ -46,7 +46,8 @@ public class SlotManager : MonoBehaviour
         else
         {
             sn.enabled=false;
-            le.LoadGame(ss[slot_no-1]);
+            if(ss.Length<slot_no-1)
+                le.LoadGame(ss[slot_no-1]);
         }
         sn.text = null;
         le.Show();
