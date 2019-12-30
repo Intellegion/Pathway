@@ -92,7 +92,6 @@ public class LevelEditor : MonoBehaviour
     {
         StopCoroutine(GetComponent<Modes>().End());
         play.interactable=false;
-        mg = new MazeGen(go,this);
         DeleteCoins();
         mg.refresh();
         loadbutton.interactable = true;
@@ -120,9 +119,9 @@ public class LevelEditor : MonoBehaviour
     public void Load()
     {
         Hide();
+        play.interactable = true;
         menu_canvas.gameObject.SetActive(true);
         SlotManager.save_load = false;
-        loadbutton.gameObject.SetActive(false);
         s_l.text = "Load";
     }
     public void LoadGame(string name)
@@ -152,9 +151,11 @@ public class LevelEditor : MonoBehaviour
     }
     public void Last()
     {
+        mg = new MazeGen(go,this);
         mg.refresh();
         mg.loaddata("temp");
         play.interactable = true;
+        mode.interactable = true;
         last.interactable = false;
     }
     public void New()
@@ -190,6 +191,7 @@ public class LevelEditor : MonoBehaviour
     public void Play()
     {  
         mg.savedata("temp");
+        PlayerController.dead = false;
         play_mode = true;
         last.interactable=false;
         if(GameObject.FindGameObjectWithTag("Player"))

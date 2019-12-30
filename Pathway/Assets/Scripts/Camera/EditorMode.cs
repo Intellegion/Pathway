@@ -66,7 +66,6 @@ public class EditorMode : MonoBehaviour
         if(tile.Equals(Tiles.enemy)&&hit.collider == null&&((worldPoint.x>=0&&worldPoint.x<MazeGen.sizeX)&&worldPoint.y>=0&&worldPoint.y<MazeGen.sizeY))
         {
             GameObject e = Instantiate(enemy, new Vector2(Mathf.Round(worldPoint.x), Mathf.Round(worldPoint.y)), Quaternion.identity);
-            e.tag = "enemy";
         }
         else if(tile.Equals(Tiles.player)&&hit.collider == null&&((worldPoint.x>=0&&worldPoint.x<MazeGen.sizeX)&&worldPoint.y>=0&&worldPoint.y<MazeGen.sizeY))
         {

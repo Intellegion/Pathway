@@ -387,6 +387,19 @@ public class MazeGen
     public void loaddata(string name)
     {
         MazeData md = SaveSystem.Instance.Loadgame(name);
+        sizeX = md.sizeX;
+        sizeY = md.sizeY;
+        for(int i = 0; i < sizeX; i++)
+        {
+            grids[i] = new Grids[sizeY];
+        }
+        for (int i = 0; i < sizeX; i++)
+        {
+            for (int j = 0; j < sizeY; j++)
+            {
+                grids[i][j] = new Grids(i, j);
+            }
+        }
         for(int i=0;i<sizeX;i++)
         {
             for(int j=0;j<sizeY;j++)
@@ -425,12 +438,6 @@ public class MazeGen
             greenTiles.Add(i);
             t.GetChild(i).tag = "green";
             t.GetChild(i).GetComponent<SpriteRenderer>().color = Color.green;          
-        }
-        foreach(int i in md.black_indices)
-        {
-            blackTiles.Add(i);
-            t.GetChild(i).tag = "black";
-            t.GetChild(i).GetComponent<SpriteRenderer>().color = Color.black;          
         }
         foreach(int i in md.red_indices)
         {

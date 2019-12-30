@@ -2,11 +2,11 @@
 [System.Serializable]
 public class MazeData 
 {
+    public int sizeX, sizeY;
     public bool[,][] g = new bool[MazeGen.sizeX, MazeGen.sizeY][];
     public int[] blue_indices;
     public int[] yellow_indices;
     public int[] green_indices;
-    public int[] black_indices;
     public int[] red_indices;
     public int[] blueS_indices;
     public int[] yellowS_indices;
@@ -17,10 +17,12 @@ public class MazeData
     public int[] enemysy;
     public MazeData(MazeGen mg)
     {
+        sizeX = MazeGen.sizeX;
+        sizeY = MazeGen.sizeY;
+
         blue_indices = new int[mg.blueTiles.Count];
         yellow_indices = new int[mg.yellowTiles.Count];
         green_indices = new int[mg.greenTiles.Count];
-        black_indices = new int[mg.blackTiles.Count];
         red_indices = new int[mg.redTiles.Count];
 
         blueS_indices = new int[mg.blueShifters.Count];
@@ -59,10 +61,6 @@ public class MazeData
         for(int i =0;i<mg.greenTiles.Count;i++)
         {
             green_indices[i]=mg.greenTiles[i];
-        }
-        for(int i =0;i<mg.blackTiles.Count;i++)
-        {
-            black_indices[i]=mg.blackTiles[i];
         }
         for(int i =0;i<mg.redTiles.Count;i++)
         {

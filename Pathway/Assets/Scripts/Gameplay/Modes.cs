@@ -10,12 +10,14 @@ public class Modes : MonoBehaviour
     private TMP_Dropdown mode;
     private GameObject go;
     protected int coins;
+    private GameObject player;
     public void Start()
     {
         Initialize();
     }
     public void GameStart()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         if(mode.value==1)
             StartCoroutine(End());
     }
@@ -50,7 +52,6 @@ public class Modes : MonoBehaviour
     }
     protected void EndGame(bool outcome, int points)
     {
-        StopCoroutine(End());
         GameEnd.End(outcome,points);
         SceneManager.LoadScene(1);
     }
@@ -63,12 +64,16 @@ public class Modes : MonoBehaviour
             {
                 break;
             }
-            else 
-                yield return new WaitForSeconds(1);
-            if(PlayerController.dead==true)
+            else if(PlayerController.dead==true)
             {
                 break;
             }
+            else if((player.transform.position.x>MazeGen.sizeX)||(player.transform.position.x<-0.75)||(player.transform.position.y>MazeGen.sizeY)||(player.transform.position.y<-0.75))
+            {
+                break;
+            }
+            else 
+                yield return new WaitForSeconds(1);
         }
         if(coins==0)
             EndGame(true,MazeGen.sizeX*MazeGen.sizeY);

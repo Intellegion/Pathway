@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Destroy(collider.gameObject);
+        if(collider.tag.Equals("coin"))
+            Destroy(collider.gameObject);
     }
 }
